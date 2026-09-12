@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jean Limo LLC | Luxury Transportation</title>
+    <!-- Google Fonts for Luxury Serif & Clean Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #121212;
+            --gold: #C5A059;
+            --gold-hover: #b08d4c;
+            --bg-light: #F9F9F8;
+            --text-main: #1A1A1A;
+            --text-muted: #666666;
+            --border-color: #E2E2E2;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Header / Navbar */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-box {
+            border: 1px solid var(--gold);
+            padding: 5px 8px;
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 1rem;
+        }
+
+        .logo-text {
+            color: #FFFFFF;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .menu-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #FFFFFF;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            background: url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding-bottom: 40px;
+            padding-top: 90px;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .hero-top-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            color: #FFFFFF;
+            margin-bottom: 15px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding: 10px 0;
+        }
+
+        .hero-top-info div strong {
+            display: block;
+            font-size: 0.85rem;
+            margin-bottom: 2px;
+        }
+
+        .hero-top-info span {
+            color: #ccc;
+            font-size: 0.7rem;
+        }
+
+        .service-areas {
+            color: #ddd;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* Booking Widget Card */
+        .quote-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            color: var(--text-main);
+        }
+
+        .quote-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+            font-weight: 400;
+        }
+
+        .quote-subtitle {
+            font-size: 0.68rem;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        /* Switch Tabs */
+        .tab-switch {
+            display: flex;
+            background: #F0F0F0;
+            border-radius: 8px;
+            padding: 4px;
+            margin-bottom: 15px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .tab-btn.active {
+            background: var(--primary-dark);
+            color: #FFFFFF;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        /* Form Inputs */
+        .input-group {
+            margin-bottom: 12px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #FAFAFA;
+            outline: none;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--primary-dark);
+            color: #FFFFFF;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 6px;
+        }
+
+        .card-footer-notes {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 12px;
+            line-height: 1.4;
+        }
+
+        /* Mobile Slide-out Menu */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 340px;
+            height: 100vh;
+            background: #FFFFFF;
+            z-index: 1000;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+            transition: right 0.4s ease-in-out;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .mobile-nav.open {
+            right: 0;
+        }
+
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 1.1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .nav-footer-contact {
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+
+        .nav-phone {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .book-now-drawer {
+            display: block;
+            width: 100%;
+            background: var(--gold);
+            color: #FFFFFF;
+            text-align: center;
+            padding: 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo-container">
+            <div class="logo-box">JL</div>
+            <span class="logo-text">Jean Limo</span>
+        </a>
+        <button class="menu-btn" onclick="toggleMenu()">
+            Menu ☰
+        </button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            
+            <div class="hero-top-info">
+                <div>
+                    <strong>24/7 Dispatch</strong>
+                    <span>Every day of the year</span>
+                </div>
+                <div>
+                    <strong>Full refund</strong>
+                    <span>When canceled &gt; 24h ahead</span>
+                </div>
+            </div>
+
+            <div class="service-areas">
+                Serving Houston • The Woodlands • Katy • Sugar Land & beyond
+            </div>
+
+            <!-- Instant Quote Box -->
+            <div class="quote-card">
+                <h2>Get an instant quote</h2>
+                <div class="quote-subtitle">All-Inclusive • Gratuity Included</div>
+
+                <!-- Tabs -->
+                <div class="tab-switch">
+                    <button class="tab-btn active" onclick="switchTab(this)">One-way</button>
+                    <button class="tab-btn" onclick="switchTab(this)">By the hour</button>
+                </div>
+
+                <!-- Form Fields -->
+                <form onsubmit="handleQuote(event)">
+                    <div class="input-group">
+                        <label>Pickup Address</label>
+                        <input type="text" placeholder="Address, airport, or landmark" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Drop-off Address</label>
+                        <input type="text" placeholder="Where to?" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Date</label>
+                            <input type="text" value="Sep 13, 2026">
+                        </div>
+                        <div class="input-group">
+                            <label>Pickup Time</label>
+                            <input type="text" value="10:00 AM">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">See vehicles & prices →</button>
+                </form>
+
+                <div class="card-footer-notes">
+                    Instant quote &bull; No surge pricing &bull; Full refund when cancelled more than 24 h ahead
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Mobile Slide-out Menu -->
+    <div class="mobile-nav" id="mobileNav">
+        <div>
+            <div class="nav-header">
+                <span class="serif-font" style="font-size: 1.1rem; font-weight: 600;">Jean Limo LLC</span>
+                <button class="close-btn" onclick="toggleMenu()">Close ✕</button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Fleet</a></li>
+                <li><a href="#">Drivers</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Areas</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="nav-footer-contact">
+            <a href="tel:8322066605" class="nav-phone">(832) 206-6605</a>
+            <a href="#" class="book-now-drawer">Book now</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobileNav').classList.toggle('open');
+        }
+
+        function switchTab(button) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+        }
+
+        function handleQuote(e) {
+            e.preventDefault();
+            alert("Redirecting to Jean Limo LLC vehicle selection & pricing...");
+        }
+    </script>
+</body>
+</html>
